@@ -6399,33 +6399,7 @@ window.cordova = require('cordova');
         }
     }
 
-    // Try to XHR the cordova_plugins.json file asynchronously.
-    try { // we commented we were going to try, so let us actually try and catch 
-        var xhr = new context.XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-            if (this.readyState != 4) { // not DONE
-                return;
-            }
-
-            // If the response is a JSON string which composes an array, call handlePluginsObject.
-            // If the request fails, or the response is not a JSON array, just call finishPluginLoading.
-            if (this.status == 200) {
-                var obj = JSON.parse(this.responseText);
-                if (obj && obj instanceof Array && obj.length > 0) {
-                    handlePluginsObject(obj);
-                } else {
-                    finishPluginLoading();
-                }
-            } else {
-                finishPluginLoading();
-            }
-        };
-        xhr.open('GET', 'cordova_plugins.json', true); // Async
-        xhr.send();
-    }
-    catch(err) {
-        finishPluginLoading();
-    }
+    finishPluginLoading();
 }(window));
 
 
