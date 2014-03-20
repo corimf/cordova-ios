@@ -1,0 +1,7 @@
+CVE-2014-0072 Security patch for iOS File Transfer
+
+- Cordova RTC work item number: 38661
+- Apache Cordova Jira issue: none
+- Markmail or Google Group reference: none
+- Product PMR: none
+- set trustAllHosts default value to false
