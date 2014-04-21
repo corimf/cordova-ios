@@ -5,3 +5,10 @@ CVE-2014-0072 Security patch for iOS File Transfer
 - Markmail or Google Group reference: none
 - Product PMR: none
 - set trustAllHosts default value to false
+
+Can no longer import CDVPlugin.h from plugin Objective-C++ code
+
+- Cordova RTC work item number: 40675
+- Worklight APAR number: 40645
+- Cordova JIRA issue: CB-3021
+- Description: User reported compile issue with Barcode scanner plugin with WL 6.0.x
