@@ -1,0 +1,7 @@
+Backport of CB-5488 ios: Don't attempt iframe bridge until document.body exists
+
+- Cordova RTC work item number: 41916
+- Worklight RTC work item number: 41978
+- Apache Cordova Jira issue: CB-5488
+- Markmail or Google Group reference: none
+- Fixes case where deviceReady does not fire on App Center startup on iOS
