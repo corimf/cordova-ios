@@ -1,3 +1,8 @@
+Update project settings to default minimum of iOS 5.0
+
+- Cordova RTC work item number: 43327
+- Worklight RTC work item number: 41202
+
 Backport of CB-5488 ios: Don't attempt iframe bridge until document.body exists
 
 - Cordova RTC work item number: 41916
