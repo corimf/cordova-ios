@@ -1,0 +1,14 @@
+Fix geolocation for iOS 8
+- Cordova RTC work item number: 51254
+- Apache Cordova Jira issue: https://issues.apache.org/jira/browse/CB-7158 ,
+https://issues.apache.org/jira/browse/CB-7461
+- Markmail / Google Group / StackOverflow reference:
+- IBM PMR: (found before shipped)
+- Worklight RTC work item number:
+- Full description: Using the built-in webview navigator.geolocation requires a
+new key added to the info.plist file for iOS 8. This is just added in the
+plugin.xml file for geolocation and the issue is resolved. For the Cordova
+Geolocation plugin, the issue requires the change above plus a change to the
+CDVLocation.m file in the plugin. The iOS8 SDK changed the API for requesting
+permission to access location. Therefore, changes had to be made on the
+native side to account for that.
