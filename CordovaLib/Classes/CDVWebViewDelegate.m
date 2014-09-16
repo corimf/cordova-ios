@@ -203,6 +203,17 @@ typedef enum {
     }
 }
 
+- (BOOL)shouldLoadRequest:(NSURLRequest*)request
+{
+    NSString* scheme = [[request URL] scheme];
+
+    if ([scheme isEqualToString:@"mailto"] || [scheme isEqualToString:@"tel"]) {
+        return YES;
+    }
+
+    return [NSURLConnection canHandleRequest:request];
+}
+
 - (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType
 {
     BOOL shouldLoad = YES;
@@ -250,7 +261,7 @@ typedef enum {
         } else {
             // Deny invalid URLs so that we don't get the case where we go straight from
             // webViewShouldLoad -> webViewDidFailLoad (messes up _loadCount).
-            shouldLoad = shouldLoad && [NSURLConnection canHandleRequest:request];
+            shouldLoad = shouldLoad && [self shouldLoadRequest:request];
         }
         VerboseLog(@"webView shouldLoad=%d (after) isTopLevelNavigation=%d state=%d loadCount=%d", shouldLoad, isTopLevelNavigation, _state, _loadCount);
     }
