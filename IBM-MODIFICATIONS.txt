@@ -1,0 +1,8 @@
+Improve warning message about using iCloud as web storage backup
+- Cordova RTC work item number: 53422
+- Apache Cordova Jira issue: https://issues.apache.org/jira/browse/CB-7727
+- Markmail / Google Group / StackOverflow reference:
+- IBM PMR: (found before shipped)
+- Worklight RTC work item number:
+- Full description: Add a resolution part to the “backup to iCloud” warning message that says how to change this setting
+
