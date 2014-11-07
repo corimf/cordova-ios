@@ -17,4 +17,4 @@ Cordova requires arm64 architecture
 - Worklight RTC work item number: 55901
 - Apache Cordova Jira issue: CB-6500
 - Markmail or Google Group reference: none
-- Removes conditional architectures to avoid linker errors when building for 64-bit
+- Removes conditional architectures to avoid linker errors when building for 64-bit, also set minimum deployment target to 5.1.1 since that is the minimum required
