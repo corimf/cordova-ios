@@ -10,3 +10,11 @@ Backport of CB-5488 ios: Don't attempt iframe bridge until document.body exists
 - Apache Cordova Jira issue: CB-5488
 - Markmail or Google Group reference: none
 - Fixes case where deviceReady does not fire on App Center startup on iOS
+
+Cordova requires arm64 architecture
+
+- Cordova RTC work item number: 55592
+- Worklight RTC work item number: 55901
+- Apache Cordova Jira issue: CB-6500
+- Markmail or Google Group reference: none
+- Removes conditional architectures to avoid linker errors when building for 64-bit
