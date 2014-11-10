@@ -237,7 +237,7 @@ typedef enum {
                         _loadCount = 0;
                         _state = STATE_WAITING_FOR_LOAD_START;
                         if (![self request:request isFragmentIdentifierToRequest:webView.request]) {
-                            NSString* description = [NSString stringWithFormat:@"CDVWebViewDelegate: Navigation started when state=%d", (long)_state];
+                            NSString* description = [NSString stringWithFormat:@"CDVWebViewDelegate: Navigation started when state=%ld", (long)_state];
                             NSLog(@"%@", description);
                             if ([_delegate respondsToSelector:@selector(webView:didFailLoadWithError:)]) {
                                 NSDictionary* errorDictionary = @{NSLocalizedDescriptionKey : description};
