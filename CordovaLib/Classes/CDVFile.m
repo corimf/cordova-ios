@@ -1274,7 +1274,7 @@ NSString* const kCDVAssetsLibraryPrefix = @"assets-library://";
     NSString* appFile = argPath; // [self getFullPath:argPath];
 
     unsigned long long newPos = [self truncateFile:appFile atPosition:pos];
-    CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsInt:newPos];
+    CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsInt:(int)newPos];
 
     [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
 }
@@ -1338,7 +1338,7 @@ NSString* const kCDVAssetsLibraryPrefix = @"assets-library://";
             NSUInteger len = [encData length];
             [fileStream open];
 
-            bytesWritten = [fileStream write:[encData bytes] maxLength:len];
+            bytesWritten = (int)[fileStream write:[encData bytes] maxLength:len];
 
             [fileStream close];
             if (bytesWritten > 0) {

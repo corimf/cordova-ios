@@ -56,7 +56,7 @@ static CFIndex WriteDataToStream(NSData* data, CFWriteStreamRef stream)
                 bytesToWrite - totalBytesWritten);
         if (result < 0) {
             CFStreamError error = CFWriteStreamGetError(stream);
-            NSLog(@"WriteStreamError domain: %ld error: %ld", error.domain, error.error);
+            NSLog(@"WriteStreamError domain: %ld error: %ld", error.domain, (long)error.error);
             return result;
         } else if (result == 0) {
             return result;
@@ -198,9 +198,9 @@ static CFIndex WriteDataToStream(NSData* data, CFWriteStreamRef stream)
     if (mimeType != nil) {
         [postBodyBeforeFile appendData:[[NSString stringWithFormat:@"Content-Type: %@\r\n", mimeType] dataUsingEncoding:NSUTF8StringEncoding]];
     }
-    [postBodyBeforeFile appendData:[[NSString stringWithFormat:@"Content-Length: %d\r\n\r\n", [fileData length]] dataUsingEncoding:NSUTF8StringEncoding]];
+    [postBodyBeforeFile appendData:[[NSString stringWithFormat:@"Content-Length: %ld\r\n\r\n", (long)[fileData length]] dataUsingEncoding:NSUTF8StringEncoding]];
 
-    DLog(@"fileData length: %d", [fileData length]);
+    DLog(@"fileData length: %ld", (long)[fileData length]);
     NSData* postBodyAfterFile = [[NSString stringWithFormat:@"\r\n--%@--\r\n", kFormBoundary] dataUsingEncoding:NSUTF8StringEncoding];
 
     NSUInteger totalPayloadLength = [postBodyBeforeFile length] + [fileData length] + [postBodyAfterFile length];
@@ -483,7 +483,7 @@ static CFIndex WriteDataToStream(NSData* data, CFWriteStreamRef stream)
             if (uploadResponse != nil) {
                 [uploadResult setObject:uploadResponse forKey:@"response"];
             }
-            [uploadResult setObject:[NSNumber numberWithInt:self.bytesTransfered] forKey:@"bytesSent"];
+            [uploadResult setObject:[NSNumber numberWithInteger:self.bytesTransfered] forKey:@"bytesSent"];
             [uploadResult setObject:[NSNumber numberWithInt:self.responseCode] forKey:@"responseCode"];
             result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:uploadResult];
         } else {
@@ -544,7 +544,7 @@ static CFIndex WriteDataToStream(NSData* data, CFWriteStreamRef stream)
     if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
         NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
 
-        self.responseCode = [httpResponse statusCode];
+        self.responseCode = (int)[httpResponse statusCode];
         self.bytesExpected = [response expectedContentLength];
     } else if ([response.URL isFileURL]) {
         NSDictionary* attr = [[NSFileManager defaultManager] attributesOfItemAtPath:[response.URL path] error:nil];
@@ -577,8 +577,8 @@ static CFIndex WriteDataToStream(NSData* data, CFWriteStreamRef stream)
         BOOL lengthComputable = (self.bytesExpected != NSURLResponseUnknownLength);
         NSMutableDictionary* downloadProgress = [NSMutableDictionary dictionaryWithCapacity:3];
         [downloadProgress setObject:[NSNumber numberWithBool:lengthComputable] forKey:@"lengthComputable"];
-        [downloadProgress setObject:[NSNumber numberWithInt:self.bytesTransfered] forKey:@"loaded"];
-        [downloadProgress setObject:[NSNumber numberWithInt:self.bytesExpected] forKey:@"total"];
+        [downloadProgress setObject:[NSNumber numberWithInteger:self.bytesTransfered] forKey:@"loaded"];
+        [downloadProgress setObject:[NSNumber numberWithInteger:self.bytesExpected] forKey:@"total"];
         CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:downloadProgress];
         [result setKeepCallbackAsBool:true];
         [self.command.commandDelegate sendPluginResult:result callbackId:callbackId];
@@ -591,8 +591,8 @@ static CFIndex WriteDataToStream(NSData* data, CFWriteStreamRef stream)
         NSMutableDictionary* uploadProgress = [NSMutableDictionary dictionaryWithCapacity:3];
 
         [uploadProgress setObject:[NSNumber numberWithBool:true] forKey:@"lengthComputable"];
-        [uploadProgress setObject:[NSNumber numberWithInt:totalBytesWritten] forKey:@"loaded"];
-        [uploadProgress setObject:[NSNumber numberWithInt:totalBytesExpectedToWrite] forKey:@"total"];
+        [uploadProgress setObject:[NSNumber numberWithInteger:totalBytesWritten] forKey:@"loaded"];
+        [uploadProgress setObject:[NSNumber numberWithInteger:totalBytesExpectedToWrite] forKey:@"total"];
         CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:uploadProgress];
         [result setKeepCallbackAsBool:true];
         [self.command.commandDelegate sendPluginResult:result callbackId:callbackId];

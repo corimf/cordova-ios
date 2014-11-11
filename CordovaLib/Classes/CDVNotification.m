@@ -45,7 +45,7 @@
 
     alertView.callbackId = callbackId;
 
-    int count = [buttons count];
+    NSUInteger count = [buttons count];
 
     for (int n = 0; n < count; n++) {
         [alertView addButtonWithTitle:[buttons objectAtIndex:n]];
@@ -99,7 +99,7 @@
     // Determine what gets returned to JS based on the alert view type.
     if (alertView.alertViewStyle == UIAlertViewStyleDefault) {
         // For alert and confirm, return button index as int back to JS.
-        result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsInt:buttonIndex + 1];
+        result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsInt:(int)(buttonIndex + 1)];
     } else {
         // For prompt, return button index and input text back to JS.
         NSString* value0 = [[alertView textFieldAtIndex:0] text];
