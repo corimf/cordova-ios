@@ -18,3 +18,10 @@ Cordova requires arm64 architecture
 - Apache Cordova Jira issue: CB-6500
 - Markmail or Google Group reference: none
 - Removes conditional architectures to avoid linker errors when building for 64-bit, also set minimum deployment target to 5.1.1 since that is the minimum required
+
+iOS - non https protocols like tel, mailto do not work in iFrame
+- Cordova RTC work item number: 56555
+- Worklight RTC work item number: APAR PI29625
+- Apache Cordova Jira issue: CB-7560
+- Markmail or Google Group reference: none
+- allow mailto and tel protocols, if it’s any other protocol then pass it to canHandleRequest
