@@ -6,3 +6,10 @@ Improve warning message about using iCloud as web storage backup
 - Worklight RTC work item number:
 - Full description: Add a resolution part to the “backup to iCloud” warning message that says how to change this setting
 
+iOS - non https protocols like tel, mailto do not work in iFrame
+- Cordova RTC work item number: 56555
+- Worklight RTC work item number: APAR PI29625
+- Apache Cordova Jira issue: CB-7560
+- Markmail or Google Group reference: none
+- allow mailto and tel protocols, if it’s any other protocol then pass it to canHandleRequest
+
