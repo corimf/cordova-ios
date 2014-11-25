@@ -34,7 +34,7 @@
     alertView.callbackId = callbackId;
 
     NSArray* labels = [buttons componentsSeparatedByString:@","];
-    int count = [labels count];
+    NSUInteger count = [labels count];
 
     for (int n = 0; n < count; n++) {
         [alertView addButtonWithTitle:[labels objectAtIndex:n]];
@@ -47,7 +47,7 @@
 {
     NSString* callbackId = command.callbackId;
     NSArray* arguments = command.arguments;
-    int argc = [arguments count];
+    NSUInteger argc = [arguments count];
 
     NSString* message = argc > 0 ? [arguments objectAtIndex:0] : nil;
     NSString* title = argc > 1 ? [arguments objectAtIndex:1] : nil;
@@ -67,7 +67,7 @@
 {
     NSString* callbackId = command.callbackId;
     NSArray* arguments = command.arguments;
-    int argc = [arguments count];
+    NSUInteger argc = [arguments count];
 
     NSString* message = argc > 0 ? [arguments objectAtIndex:0] : nil;
     NSString* title = argc > 1 ? [arguments objectAtIndex:1] : nil;
@@ -90,7 +90,7 @@
 - (void)alertView:(UIAlertView*)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     CDVAlertView* cdvAlertView = (CDVAlertView*)alertView;
-    CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsInt:++buttonIndex];
+    CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsInt:(int)(++buttonIndex)];
 
     [self.commandDelegate sendPluginResult:result callbackId:cdvAlertView.callbackId];
 }

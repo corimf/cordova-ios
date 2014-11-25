@@ -76,7 +76,7 @@ static NSSet* org_apache_cordova_validArrowDirections;
 
     bool hasCamera = [UIImagePickerController isSourceTypeAvailable:sourceType];
     if (!hasCamera) {
-        NSLog(@"Camera.getPicture: source type %d not available.", sourceType);
+        NSLog(@"Camera.getPicture: source type %lu not available.", (unsigned long)sourceType);
         CDVPluginResult* result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"no camera available"];
         [self.commandDelegate sendPluginResult:result callbackId:callbackId];
         return;
@@ -128,10 +128,10 @@ static NSSet* org_apache_cordova_validArrowDirections;
         if (cameraPicker.popoverController == nil) {
             cameraPicker.popoverController = [[NSClassFromString (@"UIPopoverController")alloc] initWithContentViewController:cameraPicker];
         }
-        int x = 0;
-        int y = 32;
-        int width = 320;
-        int height = 480;
+        NSInteger x = 0;
+        NSInteger y = 32;
+        NSInteger width = 320;
+        NSInteger height = 480;
         UIPopoverArrowDirection arrowDirection = UIPopoverArrowDirectionAny;
         NSDictionary* options = [command.arguments objectAtIndex:10 withDefault:nil];
         if (options) {
@@ -140,7 +140,7 @@ static NSSet* org_apache_cordova_validArrowDirections;
             width = [options integerValueForKey:@"width" defaultValue:320];
             height = [options integerValueForKey:@"height" defaultValue:480];
             arrowDirection = [options integerValueForKey:@"arrowDir" defaultValue:UIPopoverArrowDirectionAny];
-            if (![org_apache_cordova_validArrowDirections containsObject:[NSNumber numberWithInt:arrowDirection]]) {
+            if (![org_apache_cordova_validArrowDirections containsObject:[NSNumber numberWithUnsignedInteger:arrowDirection]]) {
                 arrowDirection = UIPopoverArrowDirectionAny;
             }
         }

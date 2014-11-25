@@ -419,9 +419,9 @@ static NSString* gOriginalUserAgent = nil;
 {
     if (!IsAtLeastiOSVersion(@"5.0")) {
         NSString* jsCallback = [NSString stringWithFormat:
-            @"window.__defineGetter__('orientation',function(){ return %d; }); \
+            @"window.__defineGetter__('orientation',function(){ return %ld; }); \
                                   cordova.fireWindowEvent('orientationchange');"
-            , [self mapIosOrientationToJsOrientation:fromInterfaceOrientation]];
+            , (long)[self mapIosOrientationToJsOrientation:fromInterfaceOrientation]];
         [self.commandDelegate evalJs:jsCallback];
     }
 }
@@ -746,7 +746,7 @@ static NSString* gOriginalUserAgent = nil;
 
     launchImage = [UIImage imageNamed:[[self class] resolveImageResource:orientedLaunchImageFile]];
     if (launchImage == nil) {
-        NSLog(@"WARNING: Splash-screen image '%@' was not found. Orientation: %d, iPad: %d", orientedLaunchImageFile, deviceOrientation, CDV_IsIPad());
+        NSLog(@"WARNING: Splash-screen image '%@' was not found. Orientation: %d, iPad: %d", orientedLaunchImageFile, (int)deviceOrientation, CDV_IsIPad());
     }
 
     self.imageView = [[UIImageView alloc] initWithImage:launchImage];

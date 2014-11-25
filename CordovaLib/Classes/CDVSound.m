@@ -139,7 +139,7 @@
 {
     NSMutableDictionary* errorDict = [NSMutableDictionary dictionaryWithCapacity:2];
 
-    [errorDict setObject:[NSNumber numberWithUnsignedInt:code] forKey:@"code"];
+    [errorDict setObject:[NSNumber numberWithUnsignedInteger:code] forKey:@"code"];
     [errorDict setObject:message ? message:@"" forKey:@"message"];
     return [errorDict cdvjk_JSONString];
 }
