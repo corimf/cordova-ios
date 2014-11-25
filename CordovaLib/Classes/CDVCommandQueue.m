@@ -140,10 +140,10 @@
         NSMutableDictionary* dict = nil;
         [command legacyArguments:&arguments andDict:&dict];
         // [obj performSelector:legacySelector withObject:arguments withObject:dict];
-        objc_msgSend(obj, legacySelector, arguments, dict);
+        ((void (*)(id, SEL, id, id))objc_msgSend)(obj, legacySelector, arguments, dict);
     } else if ([obj respondsToSelector:normalSelector]) {
         // [obj performSelector:normalSelector withObject:command];
-        objc_msgSend(obj, normalSelector, command);
+        ((void (*)(id, SEL, id))objc_msgSend)(obj, normalSelector, command);
     } else {
         // There's no method to call, so throw an error.
         NSLog(@"ERROR: Method '%@' not defined in Plugin '%@'", methodName, command.className);
