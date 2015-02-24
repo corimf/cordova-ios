@@ -19,3 +19,10 @@ Cordova requires arm64 architecture
 - Apache Cordova Jira issue: CB-6150, CB-4863, CB-5286, CB-6287, CB-6500, CB-6212, CB-6350
 - Markmail or Google Group reference: none
 - Removes conditional architectures to avoid linker errors when building for 64-bit, also set minimum deployment target to 5.1.1 since that is the minimum required, do some number casting to get rid of warnings, set build script to build with arm64, set architecture in project settings to 64-bit, casting to get rid of plugin warnings, fix isa method deprecation
+
+Fix issue with using URL skin
+- Cordova RTC work item number: 65611
+- Worklight RTC work item number: 65556
+- Apache Cordova Jira issue: CB-2159
+- Markmail or Google Group reference: none
+- Timing issue with the handleOpenURL function. CDVViewController.m now handles the notification and queues up the JS
