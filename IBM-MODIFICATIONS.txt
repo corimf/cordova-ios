@@ -13,3 +13,9 @@ iOS - non https protocols like tel, mailto do not work in iFrame
 - Markmail or Google Group reference: none
 - allow mailto and tel protocols, if it’s any other protocol then pass it to canHandleRequest
 
+iOS - sms protocol does not work in iFrame
+- Worklight RTC work item number: APAR 76543
+- Apache Cordova Jira issue: CB-9088
+- Markmail or Google Group reference: none
+- allow mailto, tel, and sms protocols, if it’s any other protocol then pass it to canHandleRequest
+
