@@ -3,3 +3,9 @@ iOS - sms protocol does not work in iFrame
 - Apache Cordova Jira issue: CB-9088
 - Markmail or Google Group reference: none
 - allow mailto, tel, and sms protocols, if it’s any other protocol then pass it to canHandleRequest
+
+iOS - iframe bridge failing when <iframe> is removed from DOM
+- Worklight RTC work item number: APAR 86778
+- Apache Cordova Jira issue: CB-7735
+- Markmail or Google Group reference: none
+- adds a fail safe timer that protects against the iframe being unloaded during the poke with a setTimeout function
