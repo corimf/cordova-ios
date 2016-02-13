@@ -1,3 +1,9 @@
+iOS - ENABLE_BITCODE = NO
+- Worklight RTC work item number: APAR 100569
+- Apache Cordova Jira issue:
+- Markmail or Google Group reference: none
+- app fails to deploy to real device if enable_bitcode = yes so set to no in pbxproj template
+
 iOS - sms protocol does not work in iFrame
 - Worklight RTC work item number: APAR 76543
 - Apache Cordova Jira issue: CB-9088
