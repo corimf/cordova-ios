@@ -42,3 +42,10 @@ iOS - non https protocols like tel, mailto do not work in iFrame
 - Apache Cordova Jira issue: CB-7560
 - Markmail or Google Group reference: none
 - allow mailto and tel protocols, if it’s any other protocol then pass it to canHandleRequest
+
+Fix alert box can't scroll
+- Cordova RTC work item number: 110068
+- Worklight RTC work item number: 110068
+- Apache Cordova Jira issue: CB-7734
+- Markmail or Google Group reference: none
+- If alert message is too long, alert box will not scroll in iOS 8.2
